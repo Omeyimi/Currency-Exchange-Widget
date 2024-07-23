@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="currency-converter">
+        <h2>Currency conversion</h2>
+        <p class="exchange-rate" id="exchange-rate">Select currencies to see the rate</p>
+        <div class="converter">
+            <div class="input-group">
+                <span class="currency-symbol" id="currency-symbol-from"></span>
+                <input type="number" id="amount-from" placeholder="Amount" oninput="convertCurrency()" />
+                <div class="separator"></div>
+                <select id="currency-from" onchange="convertCurrency()">
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            <div class="swap-button" onclick="swapCurrencies()">⇅</div>
+            <div class="input-group">
+                <span class="currency-symbol" id="currency-symbol-to"></span>
+                <input type="number" id="amount-to" placeholder="Converted Amount" oninput="reverseConvertCurrency()" />
+                <div class="separator"></div>
+                <select id="currency-to" onchange="convertCurrency()">
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            <a href="#" class="show-fees">Show fees</a>
+            <button onclick="convertCurrency()">Convert</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
