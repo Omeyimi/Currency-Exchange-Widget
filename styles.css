@@ -39,58 +39,66 @@ body {
     align-items: center;
     border: 1px solid #e2e2e2;
     border-radius: 8px;
-    background-color: #fff; /* Ensure background matches input field */
+    background-color: #fff;
     position: relative;
-    overflow: hidden; /* Ensure content does not overflow */
-    flex-wrap: nowrap; /* Prevent wrapping */
+    width: 100%;
 }
 
 .input-group input[type="number"] {
     flex: 1;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    padding: 10px 20px; /* Removed padding-left adjustment */
-    background-color: #fff; /* Ensure consistent background color */
-    -moz-appearance: textfield; /* Ensure consistent appearance in Firefox */
+    margin: 0; /* Ensure no margin */
+    padding: 10px 20px; /* Adjust padding */
+    border: none; /* Remove border */
+    outline: none; /* Remove outline */
+    background-color: transparent; /* Set background color */
+    box-shadow: none; /* Remove box-shadow */
+    font-size: 16px; /* Ensure font size is consistent */
+    box-sizing: border-box; /* Ensure box-sizing is consistent */
 }
 
 .input-group input[type="number"]::-webkit-outer-spin-button,
 .input-group input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none; /* Remove spinner for Chrome, Safari */
+    -webkit-appearance: none;
     margin: 0;
 }
 
 .input-group select {
     border: none;
     outline: none;
-    font-size: 16px;
+    font-size: 16px; /* Ensure font size is consistent */
     background-color: white;
-    padding: 10px 20px;
-    padding-right: 40px; /* Increased padding to accommodate flag and arrow */
+    padding: 10px 30px 10px 10px; /* Reduced padding on the right */
     cursor: pointer;
     appearance: none;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>') no-repeat right 15px center;
-    background-size: 16px 16px;
-    display: flex;
-    align-items: center;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>') no-repeat right 10px center; /* Adjust positioning */
+    background-size: 16px 16px; /* Ensure chevron is properly sized */
+    box-sizing: border-box; /* Ensure proper sizing */
 }
 
 .input-group select:focus {
-    outline: none; /* Remove default focus outline */
+    outline: none;
 }
 
 .input-group .separator {
     width: 1px;
-    height: 32px;
     background-color: #e2e2e2;
+    height: 100%; /* Ensure it matches the height of the input group */
+    margin-right: 16px; /* Add right margin */
 }
 
-.input-group .currency-symbol {
-    position: absolute;
-    left: 10px;
-    font-size: 16px;
-    color: #888;
+.currency-select-container {
+    display: flex;
+    align-items: center;
+    padding: 0; /* Ensure no extra padding */
+    margin: 0; /* Ensure no extra margin */
+    cursor: pointer; /* Make the entire container clickable */
+}
+
+.currency-flag {
+    width: 28px;
+    height: 18px;
+    border-radius: 20%;
+    margin-right: 8px; /* Adjust space between flag and text */
 }
 
 .swap-button {
@@ -120,7 +128,7 @@ button {
     color: white;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -128,34 +136,56 @@ button:hover {
 }
 
 input:focus, select:focus, button:focus {
-    outline: 2px solid #007bff; /* Custom focus styles for accessibility */
+    outline: 2px solid #007bff;
 }
 
-/* Mobile responsiveness adjustments */
-@media (max-width: 600px) {
-    .currency-converter {
-        padding: 16px;
-        margin: 0 20px; /* Add 20px margins on both sides */
-    }
-
+@media (min-width: 601px) {
     .input-group {
-        flex-direction: row; /* Keep input and select in one line */
-        flex-wrap: nowrap; /* Prevent wrapping */
-        width: 100%; /* Ensure input group is responsive */
+        flex-direction: row;
     }
 
     .input-group input[type="number"] {
-        width: 100%; /* Make input field responsive */
-        box-sizing: border-box; /* Ensure padding and border are included in the width */
+        width: calc(100% - 80px); /* Adjust width considering separator and select */
     }
 
     .input-group .separator {
-        width: 1px; /* Ensure separator remains vertical */
-        height: 32px; /* Adjust height if necessary */
-        margin: 0; /* Reset margin */
+        margin-right: 16px; /* Ensure right margin */
     }
 
-    .swap-button {
-        margin: 1px 0; /* Further reduced top and bottom margin for mobile */
+    .currency-select-container {
+        margin-right: 4px;
+    }
+    
+    .input-group .separator {
+        width: 1px;
+        height: 32px;
+        margin-right: 16px; /* Ensure right margin */
+    }
+}
+
+@media (max-width: 600px) {
+    .currency-converter {
+        margin: 0 20px;
+    }
+
+    .input-group {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 100%;
+    }
+
+    .input-group input[type="number"] {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .input-group .separator {
+        width: 1px;
+        height: 32px;
+        margin-right: 16px; /* Ensure right margin */
+    }
+    
+    .currency-select-container {
+        margin-right: 4px;
     }
 }
