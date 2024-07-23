@@ -1,190 +1,45 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background-color: #f0f2f5;
-}
+<!DOCTYPE html>
+<html lang="en">
 
-.currency-converter {
-    background-color: #fff;
-    border-radius: 20px;
-    padding: 20px;
-    padding-top: 24px;
-    max-width: 350px;
-    width: 100%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  </head>
 
-.currency-converter h2 {
-    margin: 0;
-    font-size: 20px;
-}
+  <body>
+    <div class="currency-converter">
+      <h2>Currency conversion</h2>
+      <p class="exchange-rate" id="exchange-rate">Select currencies to see the rate</p>
+      <div class="converter">
+        <div class="input-group">
+          <input type="number" id="amount-from" placeholder="Amount" oninput="convertCurrency()" />
+          <div class="separator"></div>
+          <div class="currency-select-container" onclick="toggleCurrencyDropdown('currency-from')">
+            <img src="" alt="Currency flag" class="currency-flag" id="currency-flag-from" />
+            <select id="currency-from" onchange="convertCurrency(); updateFlag('currency-from', 'currency-flag-from');">
+              <!-- Options will be populated by JavaScript -->
+            </select>
+          </div>
+        </div>
+        <div class="swap-button" onclick="swapCurrencies()">⇅</div>
+        <div class="input-group">
+          <input type="number" id="amount-to" placeholder="Converted Amount" oninput="reverseConvertCurrency()" />
+          <div class="separator"></div>
+          <div class="currency-select-container" onclick="toggleCurrencyDropdown('currency-to')">
+            <img src="" alt="Currency flag" class="currency-flag" id="currency-flag-to" />
+            <select id="currency-to" onchange="convertCurrency(); updateFlag('currency-to', 'currency-flag-to');">
+              <!-- Options will be populated by JavaScript -->
+            </select>
+          </div>
+        </div>
+        <a href="#" class="show-fees">Show fees</a>
+        <button onclick="convertCurrency()">Convert</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
 
-.currency-converter .exchange-rate {
-    margin: 6px 0 25px;
-    font-size: 14px;
-    color: #888;
-}
-
-.converter {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.input-group {
-    display: flex;
-    align-items: center;
-    border: 1px solid #e2e2e2;
-    border-radius: 8px;
-    background-color: #fff;
-    position: relative;
-    width: 100%;
-    height: 48px;
-}
-
-.input-group input[type="number"] {
-    flex: 1;
-    margin: 0; /* Ensure no margin */
-    padding: 10px 20px; /* Adjust padding */
-    border: none; /* Remove border */
-    outline: none; /* Remove outline */
-    background-color: transparent; /* Set background color */
-    box-shadow: none; /* Remove box-shadow */
-    font-size: 16px; /* Ensure font size is consistent */
-    box-sizing: border-box; /* Ensure box-sizing is consistent */
-}
-
-.input-group input[type="number"]::-webkit-outer-spin-button,
-.input-group input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.input-group select {
-    border: none;
-    outline: none;
-    font-size: 15px; /* Ensure font size is consistent */
-    background-color: white;
-    padding: 10px 30px 10px 10px; /* Reduced padding on the right */
-    cursor: pointer;
-    appearance: none;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>') no-repeat right 10px center; /* Adjust positioning */
-    background-size: 16px 16px; /* Ensure chevron is properly sized */
-    box-sizing: border-box; /* Ensure proper sizing */
-}
-
-.input-group select:focus {
-    outline: none;
-}
-
-.input-group .separator {
-    width: 1px;
-    background-color: #e2e2e2;
-    height: 100%; /* Ensure it matches the height of the input group */
-    margin-right: 16px; /* Add right margin */
-}
-
-.currency-select-container {
-    display: flex;
-    align-items: center;
-    padding: 0; /* Ensure no extra padding */
-    margin: 0; /* Ensure no extra margin */
-    cursor: pointer; /* Make the entire container clickable */
-}
-
-.currency-flag {
-    width: 24px;
-    height: 15px;
-    border-radius: 20%;
-    margin-right: 4px; /* Adjust space between flag and text */
-}
-
-.swap-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 8px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #007bff;
-    user-select: none;
-}
-
-.show-fees {
-    font-size: 14px;
-    color: #007bff;
-    text-decoration: none;
-    cursor: pointer;
-    align-self: flex-start;
-}
-
-button {
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background-color: #007bff;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-input:focus, select:focus, button:focus {
-    outline: 2px solid #007bff;
-}
-
-@media (min-width: 601px) {
-    .input-group {
-        flex-direction: row;
-    }
-
-    .input-group input[type="number"] {
-        width: calc(100% - 80px); /* Adjust width considering separator and select */
-    }
-
-
-    .currency-select-container {
-        margin-right: 0px;
-    }
-    
-    .input-group .separator {
-        width: 1px;
-        height: 48px;
-        margin-right: 16px; /* Ensure right margin */
-    }
-}
-
-@media (max-width: 600px) {
-    .currency-converter {
-        margin: 0 20px;
-    }
-
-    .input-group {
-        flex-direction: row;
-        flex-wrap: nowrap;
-        width: 100%;
-    }
-
-    .input-group input[type="number"] {
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .input-group .separator {
-        width: 1px;
-        height: 48px;
-        margin-right: 16px; /* Ensure right margin */
-    }
-    
-    .currency-select-container {
-        margin-right: 0px;
-    }
-}
+</html>
