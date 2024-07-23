@@ -42,6 +42,7 @@ body {
     background-color: #fff;
     position: relative;
     width: 100%;
+    height: 48px;
 }
 
 .input-group input[type="number"] {
@@ -155,7 +156,7 @@ input:focus, select:focus, button:focus {
     
     .input-group .separator {
         width: 1px;
-        height: 32px;
+        height: 48px;
         margin-right: 16px; /* Ensure right margin */
     }
 }
@@ -178,7 +179,7 @@ input:focus, select:focus, button:focus {
 
     .input-group .separator {
         width: 1px;
-        height: 32px;
+        height: 48px;
         margin-right: 16px; /* Ensure right margin */
     }
     
