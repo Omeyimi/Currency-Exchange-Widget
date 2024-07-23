@@ -100,7 +100,7 @@ body {
     width: 24px;
     height: 15px;
     border-radius: 20%;
-    margin-right: 8px; /* Adjust space between flag and text */
+    margin-right: 4px; /* Adjust space between flag and text */
 }
 
 .swap-button {
