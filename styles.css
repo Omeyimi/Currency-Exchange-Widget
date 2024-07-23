@@ -49,7 +49,7 @@ body {
 .input-group input[type="number"] {
     flex: 1;
     margin: 0; /* Ensure no margin */
-    padding: 10px 20px; /* Adjust padding */
+    padding: 10px 16px; /* Adjust padding */
     border: none; /* Remove border */
     outline: none; /* Remove outline */
     background-color: transparent; /* Set background color */
