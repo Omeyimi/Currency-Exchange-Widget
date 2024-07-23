@@ -42,6 +42,7 @@ body {
     background-color: #fff; /* Ensure background matches input field */
     position: relative;
     overflow: hidden; /* Ensure content does not overflow */
+    flex-wrap: nowrap; /* Prevent wrapping */
 }
 
 .input-group input[type="number"] {
@@ -134,16 +135,24 @@ input:focus, select:focus, button:focus {
 @media (max-width: 600px) {
     .currency-converter {
         padding: 16px;
+        margin: 0 20px; /* Add 20px margins on both sides */
     }
 
     .input-group {
-        flex-direction: column;
+        flex-direction: row; /* Keep input and select in one line */
+        flex-wrap: nowrap; /* Prevent wrapping */
+        width: 100%; /* Ensure input group is responsive */
+    }
+
+    .input-group input[type="number"] {
+        width: 100%; /* Make input field responsive */
+        box-sizing: border-box; /* Ensure padding and border are included in the width */
     }
 
     .input-group .separator {
-        width: 100%;
-        height: 1px;
-        margin: 8px 0;
+        width: 1px; /* Ensure separator remains vertical */
+        height: 32px; /* Adjust height if necessary */
+        margin: 0; /* Reset margin */
     }
 
     .swap-button {
