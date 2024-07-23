@@ -24,7 +24,7 @@ body {
 }
 
 .currency-converter .exchange-rate {
-    margin: 6px 0 25px;
+    margin: 6px 0 26px;
     font-size: 14px;
     color: #888;
 }
@@ -32,13 +32,13 @@ body {
 .converter {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
 }
 
 .input-group {
     display: flex;
     align-items: center;
-    border: 1px solid #e2e2e2;
+    border: 1px solid #D1D6DB;
     border-radius: 8px;
     background-color: #fff;
     position: relative;
@@ -83,7 +83,7 @@ body {
 
 .input-group .separator {
     width: 1px;
-    background-color: #e2e2e2;
+    background-color: #D1D6DB;
     height: 100%; /* Ensure it matches the height of the input group */
     margin-right: 16px; /* Add right margin */
 }
