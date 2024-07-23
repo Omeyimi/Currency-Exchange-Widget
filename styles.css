@@ -95,8 +95,8 @@ body {
 }
 
 .currency-flag {
-    width: 28px;
-    height: 18px;
+    width: 24px;
+    height: 15px;
     border-radius: 20%;
     margin-right: 8px; /* Adjust space between flag and text */
 }
