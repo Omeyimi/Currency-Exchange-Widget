@@ -39,10 +39,10 @@ body {
     align-items: center;
     border: 1px solid #e2e2e2;
     border-radius: 8px;
-    background-color: #fff;
+    background-color: #fff; /* Ensure background matches input field */
     position: relative;
-    overflow: hidden;
-    flex-wrap: nowrap;
+    overflow: hidden; /* Ensure content does not overflow */
+    flex-wrap: nowrap; /* Prevent wrapping */
 }
 
 .input-group input[type="number"] {
@@ -50,14 +50,14 @@ body {
     border: none;
     outline: none;
     font-size: 16px;
-    padding: 10px 20px;
-    background-color: #fff;
-    -moz-appearance: textfield;
+    padding: 10px 20px; /* Removed padding-left adjustment */
+    background-color: #fff; /* Ensure consistent background color */
+    -moz-appearance: textfield; /* Ensure consistent appearance in Firefox */
 }
 
 .input-group input[type="number"]::-webkit-outer-spin-button,
 .input-group input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+    -webkit-appearance: none; /* Remove spinner for Chrome, Safari */
     margin: 0;
 }
 
@@ -67,12 +67,17 @@ body {
     font-size: 16px;
     background-color: white;
     padding: 10px 20px;
+    padding-right: 40px; /* Increased padding to accommodate flag and arrow */
     cursor: pointer;
     appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>') no-repeat right 15px center;
+    background-size: 16px 16px;
+    display: flex;
+    align-items: center;
 }
 
 .input-group select:focus {
-    outline: none;
+    outline: none; /* Remove default focus outline */
 }
 
 .input-group .separator {
@@ -104,7 +109,7 @@ body {
     color: #007bff;
     text-decoration: none;
     cursor: pointer;
-    margin-top: 8px; /* Adjusted margin-top for spacing */
+    align-self: flex-start;
 }
 
 button {
@@ -115,7 +120,7 @@ button {
     color: white;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 button:hover {
@@ -123,45 +128,34 @@ button:hover {
 }
 
 input:focus, select:focus, button:focus {
-    outline: 2px solid #007bff;
+    outline: 2px solid #007bff; /* Custom focus styles for accessibility */
 }
 
+/* Mobile responsiveness adjustments */
 @media (max-width: 600px) {
     .currency-converter {
         padding: 16px;
-        margin: 0 20px;
-    }
-
-    .converter {
-        gap: 8px; /* Adjusted vertical spacing */
+        margin: 0 20px; /* Add 20px margins on both sides */
     }
 
     .input-group {
-        flex-direction: row;
-        flex-wrap: nowrap;
-        width: 100%;
+        flex-direction: row; /* Keep input and select in one line */
+        flex-wrap: nowrap; /* Prevent wrapping */
+        width: 100%; /* Ensure input group is responsive */
     }
 
     .input-group input[type="number"] {
-        width: 100%;
-        box-sizing: border-box;
+        width: 100%; /* Make input field responsive */
+        box-sizing: border-box; /* Ensure padding and border are included in the width */
     }
 
     .input-group .separator {
-        width: 1px;
-        height: 32px;
-        margin: 0;
+        width: 1px; /* Ensure separator remains vertical */
+        height: 32px; /* Adjust height if necessary */
+        margin: 0; /* Reset margin */
     }
 
     .swap-button {
-        margin: 8px 0; /* Maintain spacing around swap button */
-    }
-
-    .show-fees {
-        margin-top: 8px; /* Adjusted margin-top for spacing */
-    }
-
-    button {
-        margin-top: 8px; /* Adjusted margin-top for spacing */
+        margin: 1px 0; /* Further reduced top and bottom margin for mobile */
     }
 }
