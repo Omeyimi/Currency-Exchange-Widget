@@ -148,12 +148,9 @@ input:focus, select:focus, button:focus {
         width: calc(100% - 80px); /* Adjust width considering separator and select */
     }
 
-    .input-group .separator {
-        margin-right: 16px; /* Ensure right margin */
-    }
 
     .currency-select-container {
-        margin-right: 4px;
+        margin-right: 0px;
     }
     
     .input-group .separator {
@@ -186,6 +183,6 @@ input:focus, select:focus, button:focus {
     }
     
     .currency-select-container {
-        margin-right: 4px;
+        margin-right: 0px;
     }
 }
