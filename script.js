@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     populateCurrencyOptions();
     updateFlag('currency-from', 'currency-flag-from');
@@ -222,26 +223,36 @@ async function convertCurrency() {
 }
 
 // Reverse currency conversion
-function reverseConvertCurrency() {
+async function reverseConvertCurrency() {
     const amountTo = document.getElementById('amount-to').value;
     const currencyFrom = document.getElementById('currency-from').value;
     const currencyTo = document.getElementById('currency-to').value;
     const amountFrom = document.getElementById('amount-from');
 
-    if (amountTo === '') {
+    if (!amountTo) {
         amountFrom.value = '';
         return;
     }
 
-    fetch(`https://api.exchangerate-api.com/v4/latest/${currencyTo}`)
-        .then(response => response.json())
-        .then(data => {
-            const rate = data.rates[currencyFrom];
-            const convertedAmount = (amountTo / rate).toFixed(2);
+    try {
+        const rate = await fetchExchangeRate(currencyTo, currencyFrom);
+        const convertedAmount = (amountTo * rate).toFixed(2);
+        amountFrom.value = convertedAmount;
+    } catch (error) {
+        console.error('Error fetching exchange rates:', error);
+    }
+}
 
-            amountFrom.value = convertedAmount;
-        })
-        .catch(error => console.error('Error fetching exchange rates:', error));
+// Fetch exchange rate
+async function fetchExchangeRate(baseCurrency, targetCurrency) {
+    try {
+        const response = await fetch(`https://api.exchangerate-api.com/v4/latest/${baseCurrency}`);
+        const data = await response.json();
+        return data.rates[targetCurrency];
+    } catch (error) {
+        console.error('Error fetching exchange rate:', error);
+        throw error;
+    }
 }
 
 // Swap the selected currencies and update the conversion
