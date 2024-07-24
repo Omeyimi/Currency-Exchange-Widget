@@ -156,8 +156,6 @@ const flags = {
   VUV: 'https://flagcdn.com/w320/vu.png',
   WST: 'https://flagcdn.com/w320/ws.png',
   XAF: 'https://flagcdn.com/w320/cm.png',
-  XAG: 'https://flagcdn.com/w320/xag.png',
-  XAU: 'https://flagcdn.com/w320/xau.png',
   XCD: 'https://flagcdn.com/w320/ec.png',
   XOF: 'https://flagcdn.com/w320/ci.png',
   XPF: 'https://flagcdn.com/w320/pf.png',
