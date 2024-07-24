@@ -119,7 +119,7 @@ body {
 .currency-flag {
   width: 24px;
   height: 15px;
-  border-radius: 20%;
+  border-radius: 4px;
   margin-right: 4px;
   /* Adjust space between flag and text */
 }
