@@ -222,27 +222,6 @@ async function convertCurrency() {
     }
 }
 
-// Reverse currency conversion
-async function reverseConvertCurrency() {
-    const amountTo = document.getElementById('amount-to').value;
-    const currencyFrom = document.getElementById('currency-from').value;
-    const currencyTo = document.getElementById('currency-to').value;
-    const amountFrom = document.getElementById('amount-from');
-
-    if (!amountTo) {
-        amountFrom.value = '';
-        return;
-    }
-
-    try {
-        const rate = await fetchExchangeRate(currencyTo, currencyFrom);
-        const convertedAmount = (amountTo * rate).toFixed(2);
-        amountFrom.value = convertedAmount;
-    } catch (error) {
-        console.error('Error fetching exchange rates:', error);
-    }
-}
-
 // Fetch exchange rate
 async function fetchExchangeRate(baseCurrency, targetCurrency) {
     try {
@@ -254,6 +233,37 @@ async function fetchExchangeRate(baseCurrency, targetCurrency) {
         throw error;
     }
 }
+
+// Reverse currency conversion
+async function reverseConvertCurrency() {
+    const amountTo = document.getElementById('amount-to').value;
+    const currencyFrom = document.getElementById('currency-from').value;
+    const currencyTo = document.getElementById('currency-to').value;
+    const amountFrom = document.getElementById('amount-from');
+    const exchangeRateDisplay = document.getElementById('exchange-rate');
+
+    if (!amountTo) {
+        amountFrom.value = '';
+        exchangeRateDisplay.textContent = ''; // Clear the exchange rate display if no amount is entered
+        return;
+    }
+
+    try {
+        const rate = await fetchExchangeRate(currencyTo, currencyFrom);
+        const convertedAmount = (amountTo * rate).toFixed(2);
+        amountFrom.value = convertedAmount;
+        exchangeRateDisplay.textContent = `1 ${currencyTo} = ${rate} ${currencyFrom}`; // Update exchange rate display
+    } catch (error) {
+        console.error('Error fetching exchange rates:', error);
+        exchangeRateDisplay.textContent = ''; // Clear the exchange rate display on error
+    }
+}
+
+// Add event listener to the 'amount-to' input field
+document.getElementById('amount-to').addEventListener('input', reverseConvertCurrency);
+
+// Other functions (swapCurrencies, toggleCurrencyDropdown, etc.) remain unchanged
+
 
 // Swap the selected currencies and update the conversion
 function swapCurrencies() {
