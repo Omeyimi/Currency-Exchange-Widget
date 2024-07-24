@@ -18,8 +18,8 @@
           <input type="number" id="amount-from" placeholder="Amount" oninput="convertCurrency()" />
           <div class="colored-box">
             <div class="separator"></div>
-            <img src="" alt="Currency flag" id="currency-flag-from" />
             <div class="currency-select-container" onclick="toggleCurrencyDropdown('currency-from')">
+              <img src="" alt="Currency flag" class="currency-flag" id="currency-flag-from" />
               <select id="currency-from" onchange="convertCurrency(); updateFlag('currency-from', 'currency-flag-from');">
                 <!-- Options will be populated by JavaScript -->
               </select>
