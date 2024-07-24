@@ -1,3 +1,4 @@
+
 body {
   display: flex;
   justify-content: center;
@@ -166,6 +167,7 @@ button:focus {
 }
 
 .colored-box {
+  align-items: center;
   background-color: #F4F5F6;
   display: flex;
   flex-direction: row;
@@ -181,11 +183,6 @@ button:focus {
   .input-group input[type="number"] {
     width: calc(100% - 80px);
     /* Adjust width considering separator and select */
-  }
-
-
-  .currency-select-container {
-    margin-right: 0px;
   }
 
   .input-group .separator {
@@ -217,9 +214,5 @@ button:focus {
     height: 48px;
     margin-right: 16px;
     /* Ensure right margin */
-  }
-
-  .currency-select-container {
-    margin-right: 0px;
   }
 }
