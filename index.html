@@ -16,23 +16,27 @@
       <div class="converter">
         <div class="input-group">
           <input type="number" id="amount-from" placeholder="Amount" oninput="convertCurrency()" />
-          <div class="separator"></div>
-          <div class="currency-select-container" onclick="toggleCurrencyDropdown('currency-from')">
-            <img src="" alt="Currency flag" class="currency-flag" id="currency-flag-from" />
-            <select id="currency-from" onchange="convertCurrency(); updateFlag('currency-from', 'currency-flag-from');">
-              <!-- Options will be populated by JavaScript -->
-            </select>
+          <div class="colored-box">
+            <div class="separator"></div>
+            <div class="currency-select-container" onclick="toggleCurrencyDropdown('currency-from')">
+              <img src="" alt="Currency flag" class="currency-flag" id="currency-flag-from" />
+              <select id="currency-from" onchange="convertCurrency(); updateFlag('currency-from', 'currency-flag-from');">
+                <!-- Options will be populated by JavaScript -->
+              </select>
+            </div>
           </div>
         </div>
         <div class="swap-button" onclick="swapCurrencies()">⇅</div>
         <div class="input-group">
           <input type="number" id="amount-to" placeholder="Converted Amount" oninput="reverseConvertCurrency()" />
-          <div class="separator"></div>
-          <div class="currency-select-container" onclick="toggleCurrencyDropdown('currency-to')">
-            <img src="" alt="Currency flag" class="currency-flag" id="currency-flag-to" />
-            <select id="currency-to" onchange="convertCurrency(); updateFlag('currency-to', 'currency-flag-to');">
-              <!-- Options will be populated by JavaScript -->
-            </select>
+          <div class="colored-box">
+            <div class="separator"></div>
+            <div class="currency-select-container" onclick="toggleCurrencyDropdown('currency-to')">
+              <img src="" alt="Currency flag" class="currency-flag" id="currency-flag-to" />
+              <select id="currency-to" onchange="convertCurrency(); updateFlag('currency-to', 'currency-flag-to');">
+                <!-- Options will be populated by JavaScript -->
+              </select>
+            </div>
           </div>
         </div>
         <a href="#" class="show-fees">Show fees</a>
